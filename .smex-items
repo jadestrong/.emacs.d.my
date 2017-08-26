@@ -1,0 +1,26 @@
+
+;; ----- smex-history -----
+(
+ swiper
+ indent-region
+ indent-to
+ mouse-major-mode-menu
+ delete-minibuffer-contents
+ do-auto-save
+ mark-word
+)
+
+;; ----- smex-data -----
+(
+ (customize . 1)
+ (undo . 1)
+ (comment-box . 1)
+ (customize-face . 2)
+ (mark-word . 1)
+ (do-auto-save . 1)
+ (delete-minibuffer-contents . 1)
+ (mouse-major-mode-menu . 1)
+ (indent-to . 1)
+ (indent-region . 1)
+ (swiper . 2)
+)

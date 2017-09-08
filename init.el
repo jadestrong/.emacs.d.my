@@ -1,21 +1,3 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (zenburn-theme color-theme auto-complete counsel swiper ace-window which-key use-package try org-bullets))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-
-
-
-(setq inhibit-startup-message t)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -27,89 +9,31 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-(use-package try
-  :ensure t)
-
-(tool-bar-mode -1)
-
-;; which-key
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
-
-;; Org-mode
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-;; (setq indo-enable-flex-matching t)	
-;; (setq ido-everywhere t)
-;; (ido-mode 1)
-
-(defalias 'list-buffers 'ibuffer)
-;; (defalias 'list-buffers 'ibuffer-other-window)
-
-;; If you like a tabbar
-; (use-package tabbar
-;   :ensure t
-;   :config
-;   (tabbar-mode 1))
+;; (setq exec-path (append exec-path '("/Users/jadestrong/.nvm/versions/node/v8.2.1/bin")))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
 
-(use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-    ))
-
-(use-package counsel
-  :ensure t
-  )
-
-(use-package swiper
-  :ensure try
-  :bind (("C-s" . swiper)
-	 ("C-r" . swiper)
-	 ("C-c C-r" . ivy-resume)
-	 ("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file))
-  :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
-
-(use-package avy
-  :ensure t
-  :bind ("M-s" . avy-goto-char))
-
-(use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
-
-(use-package color-theme
-  :ensure t)
-
-(use-package zenburn-theme
-  :ensure t
-  :config (load-theme 'zenburn t))
-
-
-
-
-
-
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#5f5f5f" "#ff4b4b" "#a1db00" "#fce94f" "#5fafd7" "#d18aff" "#afd7ff" "#ffffff"])
+ '(custom-safe-themes
+   (quote
+	("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+ '(indent-tabs-mode t)
+ '(package-selected-packages
+   (quote
+	(exec-path-from-shell dracula-theme linum-relative solarized-theme ag dumb-jump smart-tabs-mode eslint-fix js2-mode web-mode undo-tree djvu vue-mode vue-mod elfeed-org zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window)))
+ '(tab-width 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))

@@ -1,0 +1,1 @@
+("~/Documents/JadeStrong/crs_fe/" "~/.emacs.d/" "~/Documents/GitHub/NIM_Web_Demo_H5/")

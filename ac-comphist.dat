@@ -1,0 +1,68 @@
+((("exec-path-from-shell" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("ns" .
+   [1 0])
+  ("window-system" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("memq" .
+   [1 0 0 0])
+  ("when" .
+   [1 0 0 0])
+  ("setq" .
+   [5 0 0 0])
+  ("tab-width" .
+   [1 0 0 0 0 0 0 0 0])
+  ("indent-tabs-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("user" .
+   [1 0 0 0])
+  ("use-package" .
+   [1 0 0 0 0 0 0 0 0 0 5])
+  (":ensure" .
+   [6 0 0 0 0 0 0])
+  (":config" .
+   [6 0 0 0 0 0 0])
+  ("ivy" .
+   [3 0 0])
+  ("counsel-projectile" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  (":bind" .
+   [4 0 0 0 0])
+  ("dump-jump-go-prefer-external" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":init" .
+   [3 0 0 0 0])
+  ("counsel" .
+   [1 0 0 0 0 0 0])
+  ("counsel-yank-pop" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  (":map" .
+   [2 0 0 0])
+  ("ivy-minibuffer-" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ivy-next-line" .
+   [0 0 0 0 0 0 0 0 2 0 0 0 0])
+  ("ivy-minibuffer-map" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  (":diminish" .
+   [0 0 0 0 0 0 1 0 0])
+  ("ivy-mode" .
+   [2 0 0 0 0 0 0 0])
+  ("ivy-switch-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ivy-use-virtual-buffers" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("ivy-display-style" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("fancy" .
+   [1 0 0 0 0])
+  ("linum-on" .
+   [1 0 0 0 0 0 1 1])
+  ("progv" .
+   [0 0 0 0 1])
+  ("linum-relative-toggle" .
+   [0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("progn" .
+   [1 0 0 1 1])
+  ("linum" .
+   [1 0 0 0 0])))

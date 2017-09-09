@@ -7,3 +7,48 @@ git status
 eslint
 nvm
 nvm
+..
+..
+..
+l
+ls
+cd jadestrong.github.io/
+..
+..
+cd officalwebsite/
+l
+ls
+cd html
+l
+ls
+cd src/media/
+l
+ls
+..
+ls
+..
+l
+ls
+cd ~
+l
+ls
+cd ls -al
+ls -al
+cd ~
+cd Documents/
+l
+ls
+ls
+ls -l
+cd JadeStrong/
+ls -l
+rm table_*
+ls -l
+cd MyNIM_demo/
+ls -l
+ls -al
+l
+npm init
+l
+ls
+npm install --save vue vuex

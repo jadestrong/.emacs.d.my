@@ -1,1 +1,1 @@
-("~/Documents/JadeStrong/crs_fe/" "~/.emacs.d/" "~/Documents/GitHub/NIM_Web_Demo_H5/")
+("~/.emacs.d/" "~/Documents/JadeStrong/crm_mobile/" "~/Documents/JadeStrong/crs_fe/" "~/Documents/officalwebsite/" "~/Documents/GitHub/NIM_Web_Demo_H5/")

@@ -13,6 +13,7 @@
 ;; (setq exec-path (append exec-path '("/usr/local/bin")))
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
 (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
 
@@ -29,7 +30,7 @@
  '(indent-tabs-mode t)
  '(package-selected-packages
    (quote
-	(exec-path-from-shell dracula-theme linum-relative solarized-theme ag dumb-jump smart-tabs-mode eslint-fix js2-mode web-mode undo-tree djvu vue-mode vue-mod elfeed-org zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window)))
+	(smartparens better-shell exec-path-from-shell dracula-theme linum-relative solarized-theme ag dumb-jump smart-tabs-mode eslint-fix js2-mode web-mode undo-tree djvu vue-mode vue-mod elfeed-org zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

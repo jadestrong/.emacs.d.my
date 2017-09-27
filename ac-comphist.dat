@@ -1,78 +1,118 @@
-((("counsel-git" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("ivy-resume" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("linum" .
-   [1 0 0 0 0])
-  ("progn" .
-   [1 0 0 1 1])
-  ("linum-relative-toggle" .
-   [0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("progv" .
-   [0 0 0 0 1])
-  ("linum-on" .
-   [1 0 0 0 0 0 1 1])
-  ("fancy" .
-   [1 0 0 0 0])
-  ("ivy-display-style" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("ivy-use-virtual-buffers" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("ivy-switch-buffer" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("ivy-mode" .
-   [2 0 0 0 0 0 0 0])
-  (":diminish" .
-   [0 0 0 0 0 0 1 0 0])
-  ("ivy-minibuffer-map" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("ivy-next-line" .
-   [0 0 0 0 0 0 0 0 2 0 0 0 0])
-  ("ivy-minibuffer-" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  (":map" .
-   [2 0 0 0])
-  ("counsel-yank-pop" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
-  ("counsel" .
-   [1 0 0 0 0 0 0])
-  (":init" .
-   [3 0 0 0 0])
-  ("dump-jump-go-prefer-external" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  (":bind" .
-   [4 0 0 0 0])
-  ("counsel-projectile" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("ivy" .
-   [3 0 0])
-  (":config" .
+((("params" .
+   [1 0 0 0 0 0])
+  ("this" .
+   [7 0 0 0])
+  ("debugger" .
+   [1 0 0 0 0 0 0 0])
+  ("log" .
+   [6 0 0])
+  ("console" .
    [6 0 0 0 0 0 0])
-  (":ensure" .
-   [6 0 0 0 0 0 0])
-  ("use-package" .
-   [1 0 0 0 0 0 0 0 0 0 5])
-  ("user" .
-   [1 0 0 0])
-  ("indent-tabs-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("tab-width" .
-   [1 0 0 0 0 0 0 0 0])
-  ("setq" .
-   [5 0 0 0])
-  ("when" .
-   [1 0 0 0])
-  ("memq" .
-   [1 0 0 0])
-  ("window-system" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("ns" .
-   [1 0])
-  ("exec-path-from-shell" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("add-to-list" .
-   [1 0 0 0 0 0 0 0 0 0 0])
+  ("from" .
+   [4 0 0 0])
+  ("to" .
+   [2 0])
+  ("$router" .
+   [2 0 0 0 0 0 0])
+  ("watch" .
+   [1 0 0 0 0])
+  ("web-mode" .
+   [1 0 0 0 0 0 0 0])
   ("auto-mode-alist" .
    [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("web-mode" .
-   [1 0 0 0 0 0 0 0])))
+  ("add-to-list" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("exec-path-from-shell" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("ns" .
+   [1 0])
+  ("window-system" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("memq" .
+   [1 0 0 0])
+  ("when" .
+   [1 0 0 0])
+  ("setq" .
+   [5 0 0 0])
+  ("tab-width" .
+   [1 0 0 0 0 0 0 0 0])
+  ("indent-tabs-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("user" .
+   [1 0 0 0])
+  ("use-package" .
+   [1 0 0 0 0 0 0 0 0 0 5])
+  (":ensure" .
+   [6 0 0 0 0 0 0])
+  (":config" .
+   [6 0 0 0 0 0 0])
+  ("ivy" .
+   [3 0 0])
+  ("counsel-projectile" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  (":bind" .
+   [4 0 0 0 0])
+  ("dump-jump-go-prefer-external" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":init" .
+   [3 0 0 0 0])
+  ("counsel" .
+   [1 0 0 0 0 0 0])
+  ("counsel-yank-pop" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  (":map" .
+   [2 0 0 0])
+  ("ivy-minibuffer-" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ivy-next-line" .
+   [0 0 0 0 0 0 0 0 2 0 0 0 0])
+  ("ivy-minibuffer-map" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  (":diminish" .
+   [0 0 0 0 0 0 1 0 0])
+  ("ivy-mode" .
+   [2 0 0 0 0 0 0 0])
+  ("ivy-switch-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ivy-use-virtual-buffers" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("ivy-display-style" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("fancy" .
+   [1 0 0 0 0])
+  ("linum-on" .
+   [1 0 0 0 0 0 1 1])
+  ("progv" .
+   [0 0 0 0 1])
+  ("linum-relative-toggle" .
+   [0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("progn" .
+   [1 0 0 1 1])
+  ("linum" .
+   [1 0 0 0 0])
+  ("ivy-resume" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("counsel-git" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("searchOptions" .
+   [2 0 0 0 0 0 0 0 2 0 1 2 0])
+  ("data" .
+   [2 0 0 0])
+  ("Object" .
+   [1 0 0 0 0 0])
+  ("assign" .
+   [0 0 0 0 0 1])
+  ("getSearchResult" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("loadItems" .
+   [1 0 0 0 0 0 0 0 0])
+  ("history" .
+   [1 0 0 0 0 0 0])
+  ("true" .
+   [3 0 0 0])
+  ("showInBindModal" .
+   [0 0 0 0 0 0 2 0 0 0 0 0 0 0 0])
+  ("false" .
+   [4 0 0 0 0])
+  ("showTransferOutModal" .
+   [0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0])))

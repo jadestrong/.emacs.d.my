@@ -89,7 +89,7 @@
       :ensure t)
 
 ;; (use-package zenburn-theme
-;; :ensure t							   
+;; :ensure t
 ;; :config (load-theme 'zenburn t))
 
 (use-package base16-theme
@@ -106,7 +106,7 @@
       :ensure t)
 
 ;; (load-theme 'base16-flat t)
-;; (moe-light) 
+;; (moe-light)
 (use-package powerline
       :ensure t
       :config
@@ -117,6 +117,9 @@
 (use-package dracula-theme
       :ensure t
       :config (load-theme 'dracula t))
+(use-package arjen-grey-theme
+      :ensure t
+      :config (load-theme 'arjen-grey t))
 
 ;; (use-package auto-complete
 ;;   :ensure t
@@ -162,7 +165,7 @@
 
 (use-package js2-refactor
       :ensure t
-      :config 
+      :config
       (progn
 	(js2r-add-keybindings-with-prefix "C-c C-m")
 	;; eg. extract function with `C-c C-m ef`.
@@ -224,6 +227,7 @@
 
 (setq default-frame-alist '((font . "Monaco-16")))
 ;; (set-default-font "Monaco 16")
+;; (setq default-frame-alist '((font . "Source Code Pro")))
 
 (use-package eslint-fix
       :config
@@ -244,3 +248,218 @@
       (use-package smartparens-html)
       (smartparens-global-mode t)
       (show-smartparens-global-mode t))
+
+(use-package exec-path-from-shell
+      :ensure t
+      :if (memq window-system '(mac ns x))
+      :config
+      (setq exec-path-from-shell-variables '("PATH"))
+      )
+
+(use-package json-mode
+      :ensure t
+      :config
+      (setq js2-mode-show-parse-errors nil)
+      (setq js2-mode-show-strict-warnings nil))
+
+(use-package magit
+      :ensure t
+      :bind
+      (("C-x g" . magit-status)))
+
+;; (defun modi/revert-all-file-buffers ()
+;;   "Refresh all open file buffers without confirmation.
+;; Buffers in modified (not yet saved) state in emacs will not be reverted. They
+;; will be reverted though if they were modified outside emacs.
+;; Buffers visiting files which do not exist any more or are no longer readable
+;; will be killed."
+;;   (interactive)
+;;   (dolist (buf (buffer-list))
+;; 	(let ((filename (buffer-file-name buf)))
+;; 	  ;; (message "buf:%s  filename:%s  modified:%s  filereadable:%s"
+;; 	  ;;          buf filename
+;; 	  ;;          (buffer-modified-p buf) (file-readable-p (format "%s" filename)))
+
+;; 	  ;; Revert only buffers containing files, which are not modified;
+;; 	  ;; do not try to revert non-file buffers like *Messages*.
+;; 	  (when (and filename
+;; 				 (not (buffer-modified-p buf)))
+;; 		(if (file-readable-p filename)
+;; 			;; If the file exists and is readable, revert the buffer.
+;; 			(with-current-buffer buf
+;; 			  (revert-buffer :ignore-auto :noconfirm :preserve-modes))
+;; 		  ;; Otherwise, kill the buffer.
+;; 		  (let (kill-buffer-query-functions) ; No query done when killing buffer
+;; 			(kill-buffer buf)
+;; 			(message "Killed non-existing/unreadable file buffer: %s" filename))))))
+;;   (message "Finished reverting buffers containing unmodified files."))
+;; (global-set-key (kbd "<C-f5>") 'modi/revert-all-file-buffers)
+
+(global-auto-revert-mode 0)
+(setq auto-revert-check-vc-info nil)
+(auto-revert-mode 0)
+
+(use-package highlight-indent-guides
+      :ensure t
+      ;; :init
+      ;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+      :config
+      (
+       progn
+	(setq highlight-indent-guides-method 'column))
+      )
+
+(defun bjm/kill-this-buffer ()
+      "Kill the current buffer."
+      (interactive)
+      (kill-buffer (current-buffer))
+      )
+(global-set-key (kbd "C-x k") 'bjm/kill-this-buffer)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+
+(setq mac-option-modifier 'none)
+(setq mac-command-modifier 'meta)
+(setq ns-function-modifier 'hyper)
+
+(setq ns-pop-up-frames nil)
+
+(defun iwb ()
+      "indent whole buffer"
+      (interactive)
+      (delete-trailing-whitespace)
+      (indent-region (point-min) (point-max))
+      )
+
+(global-set-key (kbd "C-c n") 'iwb)
+
+(electric-pair-mode t)
+
+(use-package hideshow
+      :ensure t
+      :bind (("C->" . my-toggle-hideshow-all)
+		 ("C-<" . hs-hide-level)
+		 ("C-;" . hs-toggle-hiding))
+      :config
+      ;; Hide the comments too when you do a 'hs-hide-all'
+      (setq hs-hide-comments nil)
+      ;; Set whether isearch opens folded comments, code, or both
+      ;; where x is code, comments, t (both), or nil (neither)
+      (setq hs-isearch-open 'x)
+      ;; Add more here
+
+      (setq hs-set-up-overlay
+		(defun my-display-code-line-counts (ov)
+		      (when (eq 'code (overlay-get ov 'hs))
+			(overlay-put ov 'display
+						 (propertize
+						      (format " ... <%d>"
+								      (count-lines (overlay-start ov)
+											       (overlay-end ov)))
+						      'face 'font-lock-type-face)))))
+      (defvar my-hs-hide nil "Current state of hideshow for toggling all.")
+      ;;; autoload
+      (defun my-toggle-hideshow-all () "Toggle hideshow all."
+		 (interactive)
+		 (setq my-hs-hide (not my-hs-hide))
+		 (if my-hs-hide
+			 (hs-hide-all)
+		       (hs-show-all)))
+
+      (add-hook 'prog-mode-hook (lambda ()
+							      (hs-minor-mode 1)
+							      ))
+      (add-hook 'clojure-mode-hook (lambda ()
+								 (hs-minor-mode 1)
+								 ))
+      )
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; (use-package evil
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (setq evil-default-cursor t)
+;;     (setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
+;;     (setq evil-want-C-i-jump nil)	; don't bind [tab] to evil-jump-forward
+;;     ;; leader shortcuts
+;;     (use-package evil-leader
+;; 	:ensure t
+;; 	:init (global-evil-leader-mode)
+;; 	:config
+;; 	(progn
+;; 	  (setq evil-leader/in-all-states t)
+;; 	  ;; keyboard shortcuts
+;; 	  (evil-leader/set-key
+;; 	    "a" 'ag-project
+;; 	    "A" 'ag
+;; 	    "b" 'ido-switch-buffer
+;; 	    "c" 'mc/mark-next-like-this
+;; 	    "C" 'mc/mark-all-like-this
+;; 	    "e" 'er/expand-region
+;; 	    "E" 'mc/edit-lines
+;; 	    "f" 'ido-find-file
+;; 	    "g" 'magit-status
+;; 	    "i" 'idomenu
+;; 	    "j" 'ace-jump-mode
+;; 	    "k" 'kill-buffer
+;; 	    "K" 'kill-this-buffer
+;; 	    "o" 'occur
+;; 	    "p" 'magit-find-file-completing-read
+;; 	    "r" 'recentf-ido-find-file
+;; 	    "s" 'ag-project
+;; 	    "t" 'bw-open-term
+;; 	    "T" 'eshell
+;; 	    "w" 'save-buffer
+;; 	    "x" 'smex
+;; 	    )
+;; 	  ))
+;;     ;; boot evil by default
+;;     (evil-mode 1)
+;;     )
+;;   :config
+;;   (progn
+;;     (evil-leader/set-leader ",")
+
+;;     ;; Treat underscore as part of the word when searching
+;;     (setq-default evil-symbol-word-search 'symbol)
+
+;;     ;; Remove all keybindings from insert-state keymap, use emacs-state when editing
+;;     (setcdr evil-insert-state-map nil)
+
+;;     ;; ESC to switch back normal-state
+;;     (define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+;;     ;; TAB to indent in normal-state
+;;     (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+
+;;     ;; Use j/k to move one visual line insted of gj/gk
+;;     (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;;     (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+;;     (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+;;     (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+
+;;     ;; Enter specified state for some mode
+;;     (loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
+;; 				    (git-commit-mode . insert)
+;; 				    (git-rebase-mode . emacs)
+;; 				    (undo-tree-visualizer-mode . emacs)
+;; 				    (dired-mode . emacs))
+;; 	    do (evil-set-initial-state mode state))
+
+;;     ;; Set default state into insert
+;;     (setq evil-default-state 'insert)
+
+;;     ;; Function to insert date
+;;     (defun insert-date ()
+;; 	"Insert current date yyyy-mm-dd."
+;; 	(interactive)
+;; 	(when (use-region-p)
+;; 	  (delete-region (region-beginning) (region-end) )
+;; 	  )
+;; 	(insert (format-time-string "%Y-%m-%d"))
+;; 	)
+;;     )
+;;   )

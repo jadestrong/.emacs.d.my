@@ -1,43 +1,3 @@
-l
-ls
-git status
-l
-ls
-git status
-eslint
-nvm
-nvm
-..
-..
-..
-l
-ls
-cd jadestrong.github.io/
-..
-..
-cd officalwebsite/
-l
-ls
-cd html
-l
-ls
-cd src/media/
-l
-ls
-..
-ls
-..
-l
-ls
-cd ~
-l
-ls
-cd ls -al
-ls -al
-cd ~
-cd Documents/
-l
-ls
 ls
 ls -l
 cd JadeStrong/
@@ -52,3 +12,117 @@ npm init
 l
 ls
 npm install --save vue vuex
+cd 
+l
+ls
+cd Documents/
+cd JadeStrong/
+cd MyNIM_demo/
+touch server.js
+touch index.html login.html
+rm login.html 
+cd src/
+touch main.js
+touch App.vue
+..
+ls
+cd bul
+cd build/
+l
+touch webpack-config.js
+touch postcss.config.js
+rm webpack-config.js 
+touch webpack.config.js
+touch build.webpack.js
+..
+src
+cp ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/* ./
+cp ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./
+cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./
+l
+ls
+cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes/
+cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes
+mkdir themes
+cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes/
+l
+ls
+rm *.css
+l
+l
+rm -rf common
+l
+mkdir pages utils
+pages
+mkdir components
+l
+compos
+composents
+components
+l
+touch NavBar.vue Loading.vue FullscreenImg.vue
+..
+..
+mkdir utils
+utils
+touch page.js
+touch cookie.js
+..
+..
+mkdir gulpfile.js
+j
+~
+cd Documents/
+cd jade
+cd JadeStrong
+l
+cd ..
+cd officalwebsite/
+l
+find file 
+..
+l
+cd JadeStrong/
+l
+cd MyNIM_demo/
+l
+rm -f gulpfile.js/
+rm -r gulpfile.js/
+touch gulpfile.js
+l
+src
+l
+ls
+mkdir router
+mkdir store
+router
+touch index.js
+..
+..
+l
+cd ..
+l
+cd crs_fe/
+l
+rm -f .projectile 
+l
+..
+l
+..
+cd GitHub/
+cd NIM_Web_Demo_H5/
+l
+rm .projectile\~
+l
+rm .projectile 
+l
+..
+..
+JadeStrong
+cd crs_fe/
+cd src/pages/
+l
+mkdir RetrievalAndRegistration
+cd RetrievalAndRegistration/
+touch index.vue index.js
+l

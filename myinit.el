@@ -63,11 +63,18 @@
 	 ("C-r" . counsel-expression-history))
 	)
 ;;	 :map ivy-minibuffer-map
-      (use-package projectile
-	:ensure t
-	:config
-	;; (projectile-mode)
-	(setq projectile-global-completion-system 'ivy))
+(use-package projectile
+      :ensure t
+      :config
+      (progn
+	;; (setq projectile-global-completion-system 'ivy)
+	(setq projectile-completion-system 'ivy)
+	(setq projectile-indexing-method 'alien)
+	(setq projectile-enable-caching t)
+	(add-to-list 'projectile-globally-ignored-directories "node_modules")
+	(add-to-list 'projectile-globally-ignored-files "node_modules"))
+      :config
+      (projectile-mode))
 
       (use-package counsel-projectile
 	:ensure t
@@ -156,12 +163,83 @@
 
 (use-package js2-mode
       :ensure t
-      :ensure ac-js2
+      ;; :ensure ac-js2
       :init
       (progn
 	(add-hook 'js-mode-hook 'js2-minor-mode)
-	(add-hook 'js2-mode-hook 'ac-js2-mode)
-	))
+	;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+	)
+      :config
+      (bind-key "C-c C-c" 'compile js2-mode-map)
+      (add-hook 'js2-mode-hook 'jasminejs-mode)
+      )
+
+(use-package jasminejs-mode
+      :config
+      (add-hook 'jasminejs-mode-hook 'jasminejs-add-snippets-to-yas-snippet-dirs))
+
+(defvar my/javascript-test-regexp (concat (regexp-quote "/** Testing **/") "\\(.*\n\\)*")
+      "Regular expression matching testing-related code to remove.
+See `my/copy-javascript-region-or-buffer'.")
+
+(defun my/copy-javascript-region-or-buffer (beg end)
+      "Copy the active region or the buffer, wrapping it in script tags.
+Add a comment with the current filename and skip test-related
+code. See `my/javascript-test-regexp' to change the way
+test-related code is detected."
+      (interactive "r")
+      (unless (region-active-p)
+	(setq beg (point-min) end (point-max)))
+      (kill-new
+       (concat
+	"<script type=\"text/javascript\">\n"
+	(if (buffer-file-name) (concat "// " (file-name-nondirectory (buffer-file-name)) "\n") "")
+	(replace-regexp-in-string
+	 my/javascript-test-regexp
+	 ""
+	 (buffer-substring (point-min) (point-max))
+	 nil)
+	"\n</script>")))
+
+(defvar my/debug-counter 1)
+(defun my/insert-or-flush-debug (&optional reset beg end)
+      (interactive "pr")
+      (cond
+       ((= reset 4)
+	(save-excursion
+	      (flush-lines "console.log('DEBUG: [0-9]+" (point-min) (point-max))
+	      (setq my/debug-counter 1)))
+       ((region-active-p)
+	(save-excursion
+	      (goto-char end)
+	      (insert ");\n")
+	      (goto-char beg)
+	      (insert (format "console.log('DEBUG: %d', " my/debug-counter))
+	      (setq my/debug-counter (1+ my/debug-counter))
+	      (js2-indent-line)))
+       (t
+	;; Wrap the region in the debug
+	(insert (format "console.log('DEBUG: %d');\n" my/debug-counter))
+	(setq my/debug-counter (1+ my/debug-counter))
+	(backward-char 3)
+	(js2-indent-line))))
+
+(use-package js2-mode
+      :commands js2-mode
+      :init
+      (progn
+	(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+	;; (setq-default js2-basic-offset 2)
+	(add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode)))
+      :config
+      (progn
+	(js2-imenu-extras-setup)
+	(bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
+	(bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)
+	(bind-key "C-c b" 'js-send-buffer js2-mode-map)
+	(bind-key "C-c d" 'my/insert-or-flush-debug js2-mode-map)
+	(bind-key "C-c C-b" 'js-send-buffer-and-go js2-mode-map)
+	(bind-key "C-c w" 'my/copy-javascript-region-or-buffer js2-mode-map)))
 
 (use-package js2-refactor
       :ensure t
@@ -463,3 +541,31 @@
 ;; 	)
 ;;     )
 ;;   )
+
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-clipboard-coding-system 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
+;; (set-buffer-file-coding-system 'utf-8)
+;; (set-selection-coding-system 'utf-8)
+;; (modify-coding-system-alist 'process "*" 'utf-8)
+;; (setq default-process-coding-system '(utf-8 . utf-8))
+;; (setq-default pathname-coding-system 'utf-8)
+;; (setq default-buffer-file-coding-system 'utf-8)
+;; (prefer-coding-system 'utf-8)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
+(setq indent-line-function 'insert-tab)
+
+(setq sql-mysql-login-params
+	      '((user :default "stat2016")
+		(database :default "log_104")
+		(server :default "103.235.226.201")
+		(port :default 3306)))
+(add-hook 'sql-interactive-mode-hook
+		      (lambda ()
+			(toggle-truncate-lines t)))
+
+(use-package logview
+      :ensure t)

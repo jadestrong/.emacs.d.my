@@ -1,8 +1,8 @@
 #+STARTIP: overview
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
-  ;; (setq inhibit-startup-message t)
-  ;; (tool-bar-mode -1)
+  (setq inhibit-startup-message t)
+  (tool-bar-mode -1)
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-set-key (kbd "<f5>") 'revert-buffer)
 #+END_SRC
@@ -15,99 +15,98 @@
 * which key
   Brings up some help
   #+BEGIN_SRC emacs-lisp
-  (use-package which-key
-    :ensure t
-    :config
-    (which-key-mode))
+    (use-package which-key
+      :ensure t
+      :config
+      (which-key-mode))
   #+END_SRC
-
 * org-mode
 #+BEGIN_SRC emacs-lisp
-	(use-package org-bullets
-	  :ensure t
-	  :config
-	  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 
 * ace-window
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package ace-window
-  ;;   :ensure t
-  ;;   :init
-  ;;   (progn
-  ;;     (global-set-key [remap other-window] 'ace-window)
-  ;;     (custom-set-faces
-  ;;      '(aw-leading-char-face
-  ;;    ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-  ;;     ))
+  (use-package ace-window
+    :ensure t
+    :init
+    (progn
+      (global-set-key [remap other-window] 'ace-window)
+      (custom-set-faces
+       '(aw-leading-char-face
+         ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+      ))
 #+END_SRC
 * ivy counsel swiper
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package ivy
-  ;;   :ensure t
-  ;;   :diminish (ivy-mode)
-  ;;   :bind (
-  ;;          ("C-x b" . ivy-switch-buffer)
-  ;;          ("C-C C-r" . ivy-resume)
-  ;;          ("M-y" . ivy-next-line))
-  ;;   :config
-  ;;   (ivy-mode 1)
-  ;;   (setq ivy-use-virtual-buffers t)
-  ;;   (setq ivy-display-style 'fancy))
+  (use-package ivy
+    :ensure t
+    :diminish (ivy-mode)
+    :bind (
+           ("C-x b" . ivy-switch-buffer)
+           ("C-C C-r" . ivy-resume)
+           ("M-y" . ivy-next-line))
+    :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy))
 
-  ;; (use-package swiper
-  ;;   :ensure try
-  ;;   :bind (("C-s" . swiper)
-  ;;          )
-  ;;   :config
-  ;;   (progn
-  ;;     (ivy-mode 1)
-  ;;     (setq ivy-use-virtual-buffers t)
-  ;;     (setq ivy-display-style 'fancy)
-  ;;     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-  ;;     ))
+  (use-package swiper
+    :ensure try
+    :bind (("C-s" . swiper)
+           )
+    :config
+    (progn
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-display-style 'fancy)
+      (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+      ))
 
-  ;; (use-package counsel
-  ;;   :ensure t
-  ;;   :diminish (counsel-mode)
-  ;;   :config
-  ;;   (progn
-  ;;     (setq counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
-  ;;   :bind
-  ;;   (("M-y" . counsel-yank-pop)
-  ;;    ;; ("M-x" . counsel-M-x)
-  ;;    ("C-x C-f" . counsel-find-file)
-  ;;    ("C-c g" . counsel-git)
-  ;;    ("C-c j" . counsel-git-grep)
-  ;;    ("C-x l" . counsel-locate)
-  ;;    ("C-c k" . counsel-ag)
-  ;;    ("C-r" . counsel-expression-history))
-  ;;   )
+  (use-package counsel
+    :ensure t
+    :diminish (counsel-mode)
+    :config
+    (progn
+      (setq counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
+    :bind
+    (("M-y" . counsel-yank-pop)
+     ;; ("M-x" . counsel-M-x)
+     ("C-x C-f" . counsel-find-file)
+     ("C-c g" . counsel-git)
+     ("C-c j" . counsel-git-grep)
+     ("C-x l" . counsel-locate)
+     ("C-c k" . counsel-ag)
+     ("C-r" . counsel-expression-history))
+    )
 
-  ;; (use-package projectile
-  ;;   :ensure t
-  ;;   :delight '(:eval (concat " [" (projectile-project-name) "]"))
-  ;;   :config
-  ;;   (progn
-  ;;     ;; (setq projectile-global-completion-system 'ivy)
-  ;;     (setq projectile-completion-system 'ivy)
-  ;;     (setq projectile-indexing-method 'alien)
-  ;;     (setq projectile-enable-caching t)
-  ;;     (add-to-list 'projectile-globally-ignored-directories "node_modules")
-  ;;     (add-to-list 'projectile-globally-ignored-files "node_modules"))
-  ;;   )
+  (use-package projectile
+    :ensure t
+    :delight '(:eval (concat " [" (projectile-project-name) "]"))
+    :config
+    (progn
+      ;; (setq projectile-global-completion-system 'ivy)
+      (setq projectile-completion-system 'ivy)
+      (setq projectile-indexing-method 'alien)
+      (setq projectile-enable-caching t)
+      (add-to-list 'projectile-globally-ignored-directories "node_modules")
+      (add-to-list 'projectile-globally-ignored-files "node_modules"))
+    )
 
-  ;; (use-package counsel-projectile
-  ;;   :ensure t
-  ;;   :bind
-  ;;   (("C-c p p" . counsel-projectile-switch-project)
-  ;;    ("C-c p b" . counsel-projectile-switch-to-buffer)
-  ;;    ("C-c p f" . counsel-projectile-find-file)
-  ;;    ("C-c p d" . counsel-projectile-find-dir)
-  ;;    ("C-c p s s" . counsel-projectile-ag))
-  ;;   :config
-  ;;   (counsel-projectile-mode)
-  ;;   )
+  (use-package counsel-projectile
+    :ensure t
+    :bind
+    (("C-c p p" . counsel-projectile-switch-project)
+     ("C-c p b" . counsel-projectile-switch-to-buffer)
+     ("C-c p f" . counsel-projectile-find-file)
+     ("C-c p d" . counsel-projectile-find-dir)
+     ("C-c p s s" . counsel-projectile-ag))
+    :config
+    (counsel-projectile-mode)
+    )
 
 #+END_SRC
 * avy
@@ -150,7 +149,7 @@
   (use-package dracula-theme
     :ensure t
     :config (load-theme 'dracula t))
-    (use-package arjen-grey-theme
+  (use-package arjen-grey-theme
     :ensure t
     :config (load-theme 'arjen-grey t))
 #+END_SRC
@@ -174,37 +173,37 @@
 #+END_SRC
 * web-mode vue-mode
 #+BEGIN_SRC emacs-lisp
-      (defun my-web-mode-hook ()
-        "Hooks for Web mode."
-        (setq web-mode-markup-indent-offset 4)
-        )
-      (use-package web-mode
-        :ensure t
-        :init
-        (add-hook 'web-mode-hook #'my-web-mode-hook)
-        :config
-        (progn
-          (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-          (setq web-mode-ac-sources-alist
-                '(("css" . (ac-source-css-property))
-                  ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
-          (setq web-modep-enable-auto-closing t)
-          (setq web-mode-enable-auto-quoting t))
-        )
-      (use-package vue-html-mode
-        :ensure t
-        :custom
-        (vue-html-tab-width 4 "modify vue-html-mode tab width as 4")
-        (vue-html-extra-indent 4 "The number of columns added to every line's indention is 4"))
+  (defun my-web-mode-hook ()
+    "Hooks for Web mode."
+    (setq web-mode-markup-indent-offset 4)
+    )
+  (use-package web-mode
+    :ensure t
+    :init
+    (add-hook 'web-mode-hook #'my-web-mode-hook)
+    :config
+    (progn
+      (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+      (setq web-mode-ac-sources-alist
+            '(("css" . (ac-source-css-property))
+              ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+      (setq web-modep-enable-auto-closing t)
+      (setq web-mode-enable-auto-quoting t))
+    )
+  (use-package vue-html-mode
+    :ensure t
+    :custom
+    (vue-html-tab-width 4 "modify vue-html-mode tab width as 4")
+    (vue-html-extra-indent 4 "The number of columns added to every line's indention is 4"))
 
-      (use-package vue-mode
-        :ensure t
-        :bind (("C-c C-k" . vue-mode-edit-indirect-at-point))
-        :custom-face
-        (vue-dedicated-modes (vue-html-mode html-mode))
-        :config
-        (vue-html-mode)
-        )
+  (use-package vue-mode
+    :ensure t
+    :bind (("C-c C-k" . vue-mode-edit-indirect-at-point))
+    :custom-face
+    (vue-dedicated-modes (vue-html-mode html-mode))
+    :config
+    (vue-html-mode)
+    )
 #+END_SRC
 * js2-mode and so on
 #+BEGIN_SRC emacs-lisp
@@ -272,60 +271,60 @@
   ;;     (backward-char 3)
   ;;     (js2-indent-line))))
 
-  (use-package js2-mode
-    :commands js2-mode
-    :init
-    (progn
-      (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-      ;; (setq-default js2-basic-offset 2)
-      (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode)))
-    :config
-    (progn
-      (js2-imenu-extras-setup)
-      (bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
-      (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)
-      (bind-key "C-c b" 'js-send-buffer js2-mode-map)
-      (bind-key "C-c d" 'my/insert-or-flush-debug js2-mode-map)
-      (bind-key "C-c C-b" 'js-send-buffer-and-go js2-mode-map)
-      (bind-key "C-c w" 'my/copy-javascript-region-or-buffer js2-mode-map))
-    )
+  ;; (use-package js2-mode
+  ;;   :commands js2-mode
+  ;;   :init
+  ;;   (progn
+  ;;     (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+  ;;     ;; (setq-default js2-basic-offset 2)
+  ;;     (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode)))
+  ;;   :config
+  ;;   (progn
+  ;;     (js2-imenu-extras-setup)
+  ;;     (bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
+  ;;     (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)
+  ;;     (bind-key "C-c b" 'js-send-buffer js2-mode-map)
+  ;;     (bind-key "C-c d" 'my/insert-or-flush-debug js2-mode-map)
+  ;;     (bind-key "C-c C-b" 'js-send-buffer-and-go js2-mode-map)
+  ;;     (bind-key "C-c w" 'my/copy-javascript-region-or-buffer js2-mode-map))
+  ;;   )
 
-  (use-package js2-refactor
-    :ensure t
-    :diminish (js2-refactor-mode)
-    :config
-    (progn
-      (js2r-add-keybindings-with-prefix "C-c C-m")
-      ;; eg. extract function with `C-c C-m ef`.
-      (add-hook 'js2-mode-hook #'js2-refactor-mode)))
+  ;; (use-package js2-refactor
+  ;;   :ensure t
+  ;;   :diminish (js2-refactor-mode)
+  ;;   :config
+  ;;   (progn
+  ;;     (js2r-add-keybindings-with-prefix "C-c C-m")
+  ;;     ;; eg. extract function with `C-c C-m ef`.
+  ;;     (add-hook 'js2-mode-hook #'js2-refactor-mode)))
 
-  (use-package tern
-    :ensure tern
-    :diminish tern-mode
-    :ensure tern-auto-complete
-    :config
-    (progn
-      (add-hook 'js-mode-hook (lambda () (tern-mode t)))
-      (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-      (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-      (tern-ac-setup)
-      ))
+  ;; (use-package tern
+  ;;   :ensure tern
+  ;;   :diminish tern-mode
+  ;;   :ensure tern-auto-complete
+  ;;   :config
+  ;;   (progn
+  ;;     (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+  ;;     (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+  ;;     (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;;     (tern-ac-setup)
+  ;;     ))
 
-  (use-package nodejs-repl
-    :ensure t
-    )
+  ;; (use-package nodejs-repl
+  ;;   :ensure t
+  ;;   )
 
-  (add-hook 'js-mode-hook
-            (lambda ()
-              (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-sexp)
-              (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
-              (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
-              (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+  ;; (add-hook 'js-mode-hook
+  ;;           (lambda ()
+  ;;             (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-sexp)
+  ;;             (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+  ;;             (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
+  ;;             (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
 #+END_SRC
 * ibuffers
 #+BEGIN_SRC emacs-lisp
-  ;; (defalias 'list-buffers 'ibuffer)
-  ;; ;; (defalias 'list-buffers 'ibuffer-other-window)
+  (defalias 'list-buffers 'ibuffer)
+  (defalias 'list-buffers 'ibuffer-other-window)
 #+END_SRC
 * dump
 #+BEGIN_SRC emacs-lisp
@@ -366,16 +365,14 @@
 * font font-size
 #+BEGIN_SRC emacs-lisp
   (setq default-frame-alist '((font . "Monaco-16")))
-  ;; (set-default-font "Monaco 16")
-  ;; (setq default-frame-alist '((font . "Source Code Pro")))
 #+END_SRC
 * eslint-fix
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package eslint-fix
-  ;;   :config
-  ;;   (add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
-  ;;   (add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))
-  ;;   )
+  (use-package eslint-fix
+    :config
+    (add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
+    (add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))
+    )
 #+END_SRC
 * better-shell
 #+BEGIN_SRC emacs-lisp
@@ -408,17 +405,17 @@
 * magit
 #+BEGIN_SRC emacs-lisp
   (use-package magit
-	:ensure t
-	:config
-	(setq default-process-coding-system '(utf-8 . utf-8))
-	:bind
-	(("C-x g" . magit-status)))
+    :ensure t
+    :config
+    (setq default-process-coding-system '(utf-8 . utf-8))
+    :bind
+    (("C-x g" . magit-status)))
 #+END_SRC
 * auto revert buffer
 #+BEGIN_SRC emacs-lisp
-  (global-auto-revert-mode 0)
-  (setq auto-revert-check-vc-info nil)
-  (auto-revert-mode 0)
+  ;; (global-auto-revert-mode 0)
+  ;; (setq auto-revert-check-vc-info nil)
+  ;; (auto-revert-mode 0)
 #+END_SRC
 * highlight indent
 #+BEGIN_SRC emacs-lisp
@@ -448,14 +445,14 @@
 #+END_SRC
 * Mousewheel scrolling
 #+BEGIN_SRC emacs-lisp
-  ;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-  ;; (setq mouse-wheel-progressive-speed nil)
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+  (setq mouse-wheel-progressive-speed nil)
 #+END_SRC
 * change command to meta
 #+BEGIN_SRC emacs-lisp
-  ;; (setq mac-option-modifier 'none)
-  ;; (setq mac-command-modifier 'meta)
-  ;; (setq ns-function-modifier 'hyper)
+  (setq mac-option-modifier 'none)
+  (setq mac-command-modifier 'meta)
+  (setq ns-function-modifier 'hyper)
 #+END_SRC
 * Don't open files from the workspace in a new frame
 #+BEGIN_SRC emacs-lisp
@@ -464,11 +461,11 @@
 * Mis buffer
 #+BEGIN_SRC emacs-lisp
   (defun iwb ()
-	"indent whole buffer"
-	(interactive)
-	(delete-trailing-whitespace)
-	(indent-region (point-min) (point-max))
-	)
+    "indent whole buffer"
+    (interactive)
+    (delete-trailing-whitespace)
+    (indent-region (point-min) (point-max))
+    )
 
   (global-set-key (kbd "C-c n") 'iwb)
 
@@ -476,44 +473,44 @@
 #+END_SRC
 * Code Folding
 #+BEGIN_SRC emacs-lisp
-  (use-package hideshow
-	:ensure t
-	:bind (("C->" . my-toggle-hideshow-all)
-		   ("C-<" . hs-hide-level)
-		   ("C-;" . hs-toggle-hiding))
-	:config
-	;; Hide the comments too when you do a 'hs-hide-all'
-	(setq hs-hide-comments nil)
-	;; Set whether isearch opens folded comments, code, or both
-	;; where x is code, comments, t (both), or nil (neither)
-	(setq hs-isearch-open 'x)
-	;; Add more here
+  ;; (use-package hideshow
+  ;;   :ensure t
+  ;;   :bind (("C->" . my-toggle-hideshow-all)
+  ;; 		 ("C-<" . hs-hide-level)
+  ;; 		 ("C-;" . hs-toggle-hiding))
+  ;;   :config
+  ;;   ;; Hide the comments too when you do a 'hs-hide-all'
+  ;;   (setq hs-hide-comments nil)
+  ;;   ;; Set whether isearch opens folded comments, code, or both
+  ;;   ;; where x is code, comments, t (both), or nil (neither)
+  ;;   (setq hs-isearch-open 'x)
+  ;;   ;; Add more here
 
-	(setq hs-set-up-overlay
-		  (defun my-display-code-line-counts (ov)
-			(when (eq 'code (overlay-get ov 'hs))
-			  (overlay-put ov 'display
-						   (propertize
-							(format " ... <%d>"
-									(count-lines (overlay-start ov)
-												 (overlay-end ov)))
-							'face 'font-lock-type-face)))))
-	(defvar my-hs-hide nil "Current state of hideshow for toggling all.")
-	;;; autoload
-	(defun my-toggle-hideshow-all () "Toggle hideshow all."
-		   (interactive)
-		   (setq my-hs-hide (not my-hs-hide))
-		   (if my-hs-hide
-			   (hs-hide-all)
-			 (hs-show-all)))
+  ;;   (setq hs-set-up-overlay
+  ;; 		(defun my-display-code-line-counts (ov)
+  ;; 		  (when (eq 'code (overlay-get ov 'hs))
+  ;; 			(overlay-put ov 'display
+  ;; 						 (propertize
+  ;; 						  (format " ... <%d>"
+  ;; 								  (count-lines (overlay-start ov)
+  ;; 											   (overlay-end ov)))
+  ;; 						  'face 'font-lock-type-face)))))
+  ;;   (defvar my-hs-hide nil "Current state of hideshow for toggling all.")
+  ;;   ;;; autoload
+  ;;   (defun my-toggle-hideshow-all () "Toggle hideshow all."
+  ;; 		 (interactive)
+  ;; 		 (setq my-hs-hide (not my-hs-hide))
+  ;; 		 (if my-hs-hide
+  ;; 			 (hs-hide-all)
+  ;; 		   (hs-show-all)))
 
-	(add-hook 'prog-mode-hook (lambda ()
-								(hs-minor-mode 1)
-								))
-	(add-hook 'clojure-mode-hook (lambda ()
-								   (hs-minor-mode 1)
-								   ))
-	)
+  ;;   (add-hook 'prog-mode-hook (lambda ()
+  ;; 							  (hs-minor-mode 1)
+  ;; 							  ))
+  ;;   (add-hook 'clojure-mode-hook (lambda ()
+  ;; 								 (hs-minor-mode 1)
+  ;; 								 ))
+  ;;   )
 #+END_SRC
 * Clean trailing whitespace after save
 #+BEGIN_SRC emacs-lisp
@@ -521,8 +518,8 @@
 #+END_SRC
 * Mysql to Org-mode
  #+BEGIN_SRC emacs-lisp
-   (use-package mysql-to-org
-     :ensure t)
+   ;; (use-package mysql-to-org
+   ;;   :ensure t)
  #+END_SRC
 * Tab-Width
 #+BEGIN_SRC emacs-lisp
@@ -543,17 +540,17 @@
 #+END_SRC
 * flycheck
 #+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init
-    (add-hook 'after-init-hook #'global-flycheck-mode)
-    :config
-    (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
-    )
+  ;; (use-package flycheck
+  ;;   :ensure t
+  ;;   :init
+  ;;   (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;;   :config
+  ;;   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
+  ;;   )
 
-  (use-package flycheck-color-mode-line
-    :ensure t
-    :hook flycheck-mode-hook)
+  ;; (use-package flycheck-color-mode-line
+  ;;   :ensure t
+  ;;   :hook flycheck-mode-hook)
 #+END_SRC
 * yas diminish "yas" on power line
 #+BEGIN_SRC emacs-lisp

@@ -57,8 +57,8 @@
 
 
 ;;; A simple visible bell which works in all terminal types
-(require-package 'mode-line-bell)
-(add-hook 'after-init-hook 'mode-line-bell-mode)
+;; (require-package 'mode-line-bell)
+;; (add-hook 'after-init-hook 'mode-line-bell-mode)
 
 ;; 
 
@@ -287,7 +287,7 @@ With arg N, insert N newlines."
 
 (require-package 'which-key)
 (add-hook 'after-init-hook 'which-key-mode)
-(after-load 'which-key-mode
+(after-load 'which-key
   (diminish 'which-key-mode))
 
 ;;; kill current buffer

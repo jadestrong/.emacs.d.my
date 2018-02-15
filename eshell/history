@@ -1,128 +1,128 @@
-ls
-ls -l
-cd JadeStrong/
-ls -l
-rm table_*
-ls -l
-cd MyNIM_demo/
-ls -l
-ls -al
 l
-npm init
+rm -f detail.vue\~ general.vue\~ comparison.vue\~ trend.vue\~ 
 l
-ls
-npm install --save vue vuex
-cd 
-l
-ls
-cd Documents/
-cd JadeStrong/
-cd MyNIM_demo/
-touch server.js
-touch index.html login.html
-rm login.html 
-cd src/
-touch main.js
-touch App.vue
 ..
-ls
-cd bul
-cd build/
 l
-touch webpack-config.js
-touch postcss.config.js
-rm webpack-config.js 
-touch webpack.config.js
-touch build.webpack.js
+cd SeatsDashboard/
+touch index.vue
+l
+ls
+mkdir Select
+cd Select/
+mv ../Select.vue ../form-input.vue  .
+l
 ..
-src
-cp ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/* ./
-cp ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./
-cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./
-l
-ls
-cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes/
-cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes
-mkdir themes
-cp -rf  ~/Documents/GitHub/NIM_Web_Demo_H5/src/themes/**/* ./themes/
-l
-ls
-rm *.css
-l
-l
-rm -rf common
-l
-mkdir pages utils
-pages
-mkdir components
-l
-compos
-composents
+..
 components
 l
-touch NavBar.vue Loading.vue FullscreenImg.vue
 ..
-..
-mkdir utils
-utils
-touch page.js
-touch cookie.js
-..
-..
-mkdir gulpfile.js
-j
-~
-cd Documents/
-cd jade
-cd JadeStrong
+cd components/
 l
-cd ..
-cd officalwebsite/
+cd common/
 l
-find file 
+rm -f Select.vue\~
 ..
 l
-cd JadeStrong/
+ls
+mkdir js
+mv analytics.js js
+ls
+rm analytics.js\~ 
 l
-cd MyNIM_demo/
+cd js
 l
-rm -f gulpfile.js/
-rm -r gulpfile.js/
-touch gulpfile.js
+..
+images/
+l
+rm close.png 
+l
+..
+l
+..
 l
 src
 l
+..
+cd static/
 ls
-mkdir router
-mkdir store
-router
-touch index.js
+..
+l
+cd static/
+..
+cd src
+l
+cd style/
+l
+cd fonts/
+l
+rm -f iconfont.*
+l
+mv ~/Downloads/font_qsgdbapcovpfogvi/iconfont.* .
+l
+rm iconfont.css iconfont.js
+l
+l
+git 
+git --version
+l
+ls
+git --version
+cd Documents/
+l
+j down
+l
+node -v
+..
+cd Documents/
+l
+..
+l
+cd Downloads/
+ll
+ls
+l
+ls
 ..
 ..
 l
-cd ..
+cd WX
 l
-cd crs_fe/
-l
-rm -f .projectile 
+cd CounselorDashboard/
 l
 ..
+cd ManagerDashboard/
 l
 ..
-cd GitHub/
-cd NIM_Web_Demo_H5/
-l
-rm .projectile\~
-l
-rm .projectile 
+cd ServiceDashboard/
 l
 ..
-..
-JadeStrong
-cd crs_fe/
-cd src/pages/
+cd PublicResource/
 l
-mkdir RetrievalAndRegistration
-cd RetrievalAndRegistration/
-touch index.vue index.js
+l
+rm index.vue
+l
+ls index.js
+rm index.js
+l
+ls index.vue
+rm stuInfo.vue
+l-rw-r--r--   1 jadestrong     staff        14194 2017-12-19  2017 V2.7新版本上线说明（12.19).docx
+ls stuInfo.vue\~
+rm stuInfo.vue\~ 
+rm index.vue\~
+rm index.js\~ 
+l
+mkdir lisp
+cd lisp
+l
+touch init-locale.el
+cd modules/
+l
+cd windows/
+touch extensions.lua
+touch init.lua
+..
+mv windows ../
+l
+..
 l

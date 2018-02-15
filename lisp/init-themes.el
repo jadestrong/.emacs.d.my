@@ -4,7 +4,6 @@
 ;; (require-package 'color-theme-sanityinc-solarized)
 ;; (require-package 'color-theme-sanityinc-tomorrow)
 (require-package 'arjen-grey-theme)
-
 ;; If you don't customize it, this is the theme you get.
 (setq-default custom-enabled-themes '(arjen-grey))
 

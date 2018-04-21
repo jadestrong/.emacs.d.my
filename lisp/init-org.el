@@ -114,16 +114,92 @@ typical word processor."
 (setq org-support-shift-select t)
 
 
+;;; Task and org-capture management
+(setq org-directory "~/Documents/org");
+(defun org-file-path (filename)
+  "Return the absolute address of an org file, given its relative name."
+  (concat (file-name-as-directory org-directory) filename))
+
+(setq org-inbox-file "~/Dropbox/inbox.org")
+(setq org-index-file (org-file-path "index.org"))
+(setq org-archive-location
+      (concat (org-file-path "archive.org") "::* From %s"))
+
+(defun hrs/copy-tasks-from-inbox ()
+  (when (file-exists-p org-inbox-file)
+    (save-excursion
+      (find-file org-index-file)
+      (goto-char (point-max))
+      (insert-file-contents org-inbox-file)
+      (delete-file org-inbox-file)
+      )))
+
+(setq org-agenda-files (list org-index-file))
+
+(defun hrs/mark-done-and-archive ()
+  "Mark the state of an org-mode item as DONE and archive it."
+  (interactive)
+  (org-todo 'done)
+  (org-atchive-subtree))
+(after-load 'org
+  (define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive))
+
+
+(defun hrs/open-index-file ()
+  "Open the master org TODO list."
+  (interactive)
+  (hrs/copy-tasks-from-inbox)
+  (find-file org-index-file)
+  (flycheck-mode -1)
+  (end-of-buffer))
+
+(global-set-key (kbd "C-c i") 'hrs/open-index-file)
+
+(defun org-capture-todo ()
+  (interactive)
+  (org-capture :keys "t"))
+
+(global-set-key (kbd "M-n") 'org-capture-todo)
+(add-hook 'gfm-mode-hook
+          (lambda () (local-set-key (kbd "M-n") 'org-capture-todo)))
+
 ;;; Capturing
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; (setq org-capture-templates
+;;       `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
+;;          "* NEXT %?\n%U\n" :clock-resume t)
+;;         ("n" "note" entry (file "")
+;;          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
+;;         ))
 (setq org-capture-templates
-      `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
-         "* NEXT %?\n%U\n" :clock-resume t)
-        ("n" "note" entry (file "")
-         "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
-        ))
+      '(("b" "Blog idea"
+         entry
+         (file (org-file-path "blog-ideas.org"))
+         "* %?\n")
+
+        ("e" "Email" entry
+         (file+headline org-index-file "Inbox")
+         "* TODO %?\n\n%a\n\n")
+
+        ("f" "Finished book"
+         table-line (file "~/documents/notes/books-read.org")
+         "| %^{Title} | %^{Author} | %u |")
+
+        ("r" "Reading"
+         checkitem
+         (file (org-file-path "to-read.org")))
+
+        ("s" "Subscribe to an RSS feed"
+         plain
+         (file "~/documents/rss/urls")
+         "%^{Feed URL} \"~%^{Feed name}\"")
+
+        ("t" "Todo"
+         entry
+         (file+headline org-index-file "Inbox")
+         "* TODO %?\n" :clock-resume t)))
 
 ;;; Refiling
 

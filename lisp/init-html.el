@@ -22,14 +22,14 @@
 
 ;; web-mode
 (when (maybe-require-package 'web-mode)
-  ;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-auto-mode 'web-mode "\\.\\(jsp\\|tmpl\\)\\'")
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  ;; (add-auto-mode 'web-mode "\\.\\(jsp\\|tmpl\\)\\'")
   (defun my-web-mode-hook ()
     "Hooks for Web mode."
     (defvar web-mode-markup-indent-offset)

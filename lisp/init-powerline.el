@@ -5,7 +5,7 @@
 ;; before (require 'moe-theme).
 
 ;; Moe-theme
-;; (require-package 'powerline)
+(require-package 'powerline)
 (when (maybe-require-package 'powerline)
   (powerline-center-theme)
   )
@@ -18,6 +18,7 @@
 ;;         (setq moe-theme-resize-markdown-title '(1.5 1.4 1.3 1.2 1.0 1.0))
 ;;         (setq moe-theme-resize-org-title '(1.5 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
 ;;         (setq moe-theme-resize-rst-title '(1.5 1.4 1.3 1.2 1.1 1.0))
+;;         ;; (Available colors: blue, orange, green ,magenta, yellow, purple, red, cyan, w/b.)
 ;;         (moe-theme-set-color 'blue)
 ;;         (moe-dark)
 ;;         (powerline-moe-theme)

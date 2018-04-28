@@ -155,6 +155,16 @@ typical word processor."
 
 (global-set-key (kbd "C-c i") 'hrs/open-index-file)
 
+(defun hrs/open-blog-file ()
+  "Open the master org TODO list."
+  (interactive)
+  (hrs/copy-tasks-from-inbox)
+  (find-file (org-file-path "blog-ideas.org"))
+  (flycheck-mode -1)
+  (end-of-buffer))
+
+(global-set-key (kbd "C-c b") 'hrs/open-blog-file)
+
 (defun org-capture-todo ()
   (interactive)
   (org-capture :keys "t"))
@@ -270,14 +280,14 @@ typical word processor."
   (setq org-agenda-compact-blocks t
         org-agenda-sticky t
         org-agenda-start-on-weekday nil
-        org-agenda-span 'day
+        ;; org-agenda-span 'week
         org-agenda-include-diary nil
         org-agenda-sorting-strategy
         '((agenda habit-down time-up user-defined-up effort-up category-keep)
           (todo category-up effort-up)
           (tags category-up effort-up)
           (search category-up))
-        org-agenda-window-setup 'current-window
+        org-agenda-window-setup 'other-window
         org-agenda-custom-commands
         `(("N" "Notes" tags "NOTE"
            ((org-agenda-overriding-header "Notes")

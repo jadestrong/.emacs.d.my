@@ -6,6 +6,9 @@
 ;;----------------------------------------------------------------------------
 (add-auto-mode 'tcl-mode "Portfile\\'")
 (fset 'yes-or-no-p 'y-or-n-p)
+;; disable backup files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 ;;;Don't open files from the workspace in a new frame
 (setq ns-pop-up-frames nil)
 (add-hook 'prog-mode-hook 'goto-address-prog-mode)

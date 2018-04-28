@@ -84,6 +84,7 @@
 (require 'init-vue)
 (require 'init-highlight-indent)
 (require 'init-backups)
+;; (require 'init-remote)
 
 (require-package 'gnuplot)
 (require-package 'lua-mode)

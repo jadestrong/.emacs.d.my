@@ -3,7 +3,9 @@ elpa/
 .session
 .smex-items
 .uptimes.el
+elpa/
 elpa-25.2/
+elpa-25.3/
 .DS_Store
 .#*
 \#*
@@ -21,4 +23,12 @@ ac-comphist.dat
 myinit.el
 projectile-bookmarks.eld
 recentf
+eshell/
+.emacs.desktop
+.emacs.desktop.lock
+nov-places
+.historian
+.session
+.smex-items
+.uptimes.el
 eshell/

@@ -1,8 +1,6 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; Code:
-(maybe-require-package 'org-fstree)
-(defvar *is-a-mac*)
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
 
@@ -14,17 +12,6 @@
 (when (maybe-require-package 'org-bullets)
   (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
 
-;; Various preferences
-;; (defvar org-log-done)
-;; (defvar org-edit-timestamp-down-means-later)
-;; (defvar org-archive-mark-done)
-;; (defvar org-hide-emphasis-markers)
-;; (defvar org-catch-invisible-edits)
-;; (defvar org-export-coding-system)
-;; (defvar org-fast-tag-selection-single-key)
-;; (defvar org-html-validation-link)
-;; (defvar org-export-kill-product-buffer-when-displayed)
-;; (defvar org-tags-column)
 (setq org-log-done t
       org-edit-timestamp-down-means-later t
       org-archive-mark-done nil

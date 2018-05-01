@@ -6,7 +6,9 @@
 ;; (maybe-require-package 'lsp-vue)
 
 (when (fboundp 'vue-mode)
-  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode)))
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+  ;; (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
+  )
 
 ;; (require-package 'vue-mode)
 ;; (require-package 'lsp-mode)

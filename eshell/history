@@ -1,128 +1,128 @@
-l
-rm -f detail.vue\~ general.vue\~ comparison.vue\~ trend.vue\~ 
-l
+touch detail-filter.vue
 ..
 l
-cd SeatsDashboard/
-touch index.vue
+touch utils
+rm utils 
+mkdir utils
+cd utils/
+l
+touch nodelist.js
+..
+l
+mkdir mixins
+l
+cd mixins/
+l
+mkdir stay
+cd stay/
+touch detail-filter-mixinljs
+rm detail-filter-mixinljs 
+touch detail-filter-mixin.js
+..
+mkdir new-reigster
+cp ../Manager/new-register/mixin.js ./
+l
+mv mixin.js ./new-reigster/
+l
+l
+..
+cd Manager/
+l
+cd new-register/
+l
+rm mixin.js 
+mv ./Manager/new-register/trend-analysis.vue ./
+..
+l
+mv top-filter-mixin.js ./mixins/
 l
 ls
-mkdir Select
-cd Select/
-mv ../Select.vue ../form-input.vue  .
+clear
+
+exit
+l
+exit
+l
+touch mixin.js
+l
+..
+l
+mkdir awake
+cd awake/
+l
+touch mixin.sj
+rm mixin.sj 
+touch mixin.js
+l
+cd data_report
+l
+cd data
+cd log
+l
+cd 104
 l
 ..
 ..
-components
+cd Documents/
+grep 'e037c49667af11e7879800163e2ed8dc' 20180424.txt 
+cd Manager/
+mkdir resources
+cd resources/
 l
+touch general-filter.vue
+touch detail-filter.vue
+l
+mkdir Card
+l
+rm Card
+rm -rCard
+l
+..
+rm -r Card
+k
+l
+mkdir card
+mv Card.vue card/
+cd card/
+l
+touch index.js
+touch card.vue
+mv Card.vue card.vue
+rm Card.vue 
+touch card.vue
+..
+..
+mkdir utils
+cd utils/
+touch plugins.js
+cd com
+cd components
+l
+,,
 ..
 cd components/
 l
-cd common/
-l
-rm -f Select.vue\~
+mkdir panel
+cd panel/
+touch index.js
+touch panel.vue
+.
 ..
 l
-ls
-mkdir js
-mv analytics.js js
-ls
-rm analytics.js\~ 
+rm panel.vue 
 l
-cd js
 l
-..
-images/
+mkdir topbar
+mv TopBar.vue ./topbar/topbar.vue
+cd topbar/
 l
-rm close.png 
+touch index.js
 l
-..
+cd AreaManager/
+cp -r ../Manager/resources ./
 l
 ..
-l
-src
-l
+cp -r Manager/resources ./Director/
+cp -r Manager/resources ./Counselor/
 ..
-cd static/
-ls
-..
-l
-cd static/
-..
-cd src
-l
-cd style/
-l
-cd fonts/
-l
-rm -f iconfont.*
-l
-mv ~/Downloads/font_qsgdbapcovpfogvi/iconfont.* .
-l
-rm iconfont.css iconfont.js
-l
-l
-git 
-git --version
-l
-ls
-git --version
-cd Documents/
-l
-j down
-l
-node -v
-..
-cd Documents/
-l
-..
-l
-cd Downloads/
-ll
-ls
-l
-ls
-..
-..
-l
-cd WX
-l
-cd CounselorDashboard/
-l
-..
-cd ManagerDashboard/
-l
-..
-cd ServiceDashboard/
-l
-..
-cd PublicResource/
-l
-l
-rm index.vue
-l
-ls index.js
-rm index.js
-l
-ls index.vue
-rm stuInfo.vue
-l-rw-r--r--   1 jadestrong     staff        14194 2017-12-19  2017 V2.7新版本上线说明（12.19).docx
-ls stuInfo.vue\~
-rm stuInfo.vue\~ 
-rm index.vue\~
-rm index.js\~ 
-l
-mkdir lisp
-cd lisp
-l
-touch init-locale.el
-cd modules/
-l
-cd windows/
-touch extensions.lua
-touch init.lua
-..
-mv windows ../
-l
-..
-l
+mkdir site-lisp

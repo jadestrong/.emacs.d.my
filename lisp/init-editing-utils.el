@@ -36,6 +36,9 @@
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
+(after-load 'auto-revert
+  (diminish 'auto-revert-mode))
+
 (add-hook 'after-init-hook 'transient-mark-mode)
 
 
@@ -212,7 +215,7 @@
 (require-package 'whole-line-or-region)
 (add-hook 'after-init-hook 'whole-line-or-region-mode)
 (after-load 'whole-line-or-region
-  (diminish 'whole-line-or-region-mode))
+  (diminish 'whole-line-or-region-local-mode))
 
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."

@@ -1,80 +1,27 @@
 
 ;; ----- smex-history -----
 (
+ eshell
+ mmm-version
+ vue-mode
  eval-buffer
- elisp-slime-nav-mode
- powerline-default-theme
- powerline-center-evil-theme
- powerline-nano-theme
- powerline-vim-theme
- which-key-mode
+ package-list-packages
+ package-install
+ package-delete
 )
 
 ;; ----- smex-data -----
 (
- (smex . 1)
- (untabify . 577)
- (package-install . 7)
+ (vue-mode . 7)
+ (js-gc . 1)
+ (js2-mode . 1)
  (package-list-packages . 4)
- (counsel-projectile-ag . 7)
- (better-shell-remote-open . 7)
- (count-lines-page . 3)
- (tramp-cleanup-all-connections . 1)
- (vue-mode . 69)
- (eshell . 20)
- (helm-ag-this-file . 12)
- (projectile-ag . 1)
- (load-theme . 9)
- (eslint-fix . 7)
- (revert-buffer . 2)
- (magit-find-file . 13)
- (magit-log-buffer-file . 1)
- (magit-find-file-completing-read . 2)
- (magit-auto-revert-mode . 2)
- (magit-stash . 1)
- (magit-status . 2)
- (mkdir . 7)
- (rename-file . 4)
- (ivy-done . 1)
- (package-refresh-contents . 8)
- (lua-mode . 1)
- (list-packages . 3)
- (describe-variable . 8)
- (revert-buffer-with-coding-system . 1)
- (describe-coding-system . 1)
- (rainbow-delimiters-mode . 1)
- (profiler-start . 2)
- (profiler-report . 2)
- (line-number-mode . 1)
- (linum-mode . 1)
- (fundamental-mode . 2)
- (vue-mode-edit-indirect-at-point . 3)
- (js2-mode . 2)
- (html-mode . 1)
- (customize . 7)
- (web-mode . 2)
- (org-mode . 6)
- (smartparens-mode . 2)
- (electric-pair-mode . 1)
- (split-window-vertically . 1)
- (eval-buffer . 5)
- (browse-at-remote . 2)
- (lisp-mode . 2)
- (restclient-mode . 1)
- (sanityinc/restclient . 1)
- (guide-key-mode . 1)
- (rainbow-mode . 2)
- (highlight-indent-guides-mode . 2)
- (global-prettify-symbols-mode . 1)
- (browse-web . 1)
- (powerline-reset . 1)
- (powerline-vim-theme . 2)
- (powerline-nano-theme . 2)
- (moe-theme-random-color . 1)
- (moe-light . 1)
- (powerline-center-theme . 4)
- (powerline-default-theme . 3)
- (powerline-center-evil-theme . 2)
- (which-key-mode . 1)
- (elisp-slime-nav-mode . 2)
+ (mmm-version . 2)
+ (package-install . 3)
+ (eval-buffer . 2)
+ (package-refresh-contents . 1)
+ (reveal-mode . 2)
+ (revert-buffer . 1)
+ (package-delete . 1)
+ (eshell . 1)
 )

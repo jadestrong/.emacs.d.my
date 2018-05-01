@@ -29,6 +29,7 @@
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
+(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 (require 'init-elpa)
 (require 'init-exec-path)
 

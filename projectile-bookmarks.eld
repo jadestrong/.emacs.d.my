@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/Documents/GitHub/emacs.d/" "~/Documents/JadeStrong/crs_fe/" "~/Documents/GitHub/eye_fe/")

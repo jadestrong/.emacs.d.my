@@ -33,7 +33,11 @@
   (defun my-web-mode-hook ()
     "Hooks for Web mode."
     (defvar web-mode-markup-indent-offset)
-    (setq web-mode-markup-indent-offset 2))
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-content-types-alist
+          '(("jsx" . ".*\\.js\\'"))
+          )
+    )
   (after-load 'web-mode
     (add-hook 'web-mode-hook 'my-web-mode-hook))
   )

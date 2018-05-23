@@ -5,7 +5,9 @@
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'coffee-mode)
 (maybe-require-package 'typescript-mode)
+(maybe-require-package 'rjsx-mode)
 (maybe-require-package 'prettier-js)
+(maybe-require-package 'js-doc)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -42,6 +44,15 @@
   (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+  ;; js-doc
+  (add-hook 'js-mode-hook (lambda ()
+                            (define-key js2-mode-map (kbd "C-c j") 'js-doc-insert-function-doc)
+                            (define-key js2-mode-map (kbd "@") 'js-doc-insert-tag)))
+  (after-load 'js-doc
+    (setq js-doc-mail-address "jadestrong@163.com"
+          js-doc-author (format "JadeStrong <%s>" js-doc-mail-address)
+          js-doc-url ""
+          js-doc-license ""))
 
   (after-load 'js2-mode
     (js2-imenu-extras-setup)))
@@ -106,7 +117,14 @@
     (add-hook 'typescript-mode-hook 'add-node-modules-path))
   (after-load 'js2-mode
     (add-hook 'js2-mode-hook 'add-node-modules-path)))
+
+;;; rjsx-mode rjsx-delete-creates-full-tag C-d
+(when (fboundp 'rjsx-mode)
+  (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode)))
 
+(when (maybe-require-package 'rjsx-mode)
+  (after-load 'rjsx-mode
+    (define-key rjsx-mode-map (kbd "C-j") 'rjsx-delete-creates-full-tag)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

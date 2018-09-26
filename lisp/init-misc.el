@@ -13,7 +13,8 @@
 (setq ns-pop-up-frames nil)
 (add-hook 'prog-mode-hook 'goto-address-prog-mode)
 (setq goto-address-mail-face 'link)
-
+;; cursor color
+(set-cursor-color "#edb442")
 ;; TODO: publish this as "newscript" package or similar, providing global minor mode
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-hook 'after-save-hook 'sanityinc/set-mode-for-new-scripts)

@@ -14,6 +14,7 @@
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
 (setq-default
+ global-hl-line-mode t
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
  buffers-menu-max-size 30
@@ -102,10 +103,10 @@
 ;;   (add-hook 'after-init-hook 'global-prettify-symbols-mode))
 
 
-(require-package 'undo-tree)
-(add-hook 'after-init-hook 'global-undo-tree-mode)
-(after-load 'undo-tree
-  (diminish 'undo-tree-mode))
+;; (require-package 'undo-tree)
+;; (add-hook 'after-init-hook 'global-undo-tree-mode)
+;; (after-load 'undo-tree
+;;   (diminish 'undo-tree-mode))
 
 
 (require-package 'browse-kill-ring)

@@ -6,6 +6,10 @@ elpa/
 elpa/
 elpa-25.2/
 elpa-25.3/
+elpa-26.1/
+.bookmarks.el
+.mc-lists.el
+extension.el
 .DS_Store
 .#*
 \#*
@@ -33,3 +37,5 @@ nov-places
 /.uptimes.el
 eshell/
 games/
+tutorial/
+url/

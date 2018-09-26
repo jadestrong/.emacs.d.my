@@ -7,7 +7,9 @@
 (maybe-require-package 'typescript-mode)
 (maybe-require-package 'rjsx-mode)
 (maybe-require-package 'prettier-js)
+(maybe-require-package 'web-beautify)
 (maybe-require-package 'js-doc)
+(maybe-require-package 'js-comint)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -30,22 +32,24 @@
 
 ;; Change some defaults: customize them to override
 (setq-default js2-basic-offset 2
-              js2-bounce-indent-p nil)
+              js-switch-indent-offset 4
+              js2-bounce-indent-p nil
+              js2-strict-missing-semi-warning nil)
 (after-load 'js2-mode
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil)
   ;; ... but enable it if flycheck can't handle javascript
-  (autoload 'flycheck-get-checker-for-buffer "flycheck")
-  (defun sanityinc/disable-js2-checks-if-flycheck-active ()
-    (unless (flycheck-get-checker-for-buffer)
-      (set (make-local-variable 'js2-mode-show-parse-errors) t)
-      (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
-  (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
+  ;; (autoload 'flycheck-get-checker-for-buffer "flycheck")
+  ;; (defun sanityinc/disable-js2-checks-if-flycheck-active ()
+  ;;   (unless (flycheck-get-checker-for-buffer)
+  ;;     (set (make-local-variable 'js2-mode-show-parse-errors) t)
+  ;;     (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
+  ;; (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
   ;; js-doc
-  (add-hook 'js-mode-hook (lambda ()
+  (add-hook 'js2-mode-hook (lambda ()
                             (define-key js2-mode-map (kbd "C-c j") 'js-doc-insert-function-doc)
                             (define-key js2-mode-map (kbd "@") 'js-doc-insert-tag)))
   (after-load 'js-doc
@@ -55,7 +59,10 @@
           js-doc-license ""))
 
   (after-load 'js2-mode
-    (js2-imenu-extras-setup)))
+    (js2-imenu-extras-setup))
+  ;; eslint-fix automatically format after saving
+  ;; (add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))
+  )
 
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
@@ -75,12 +82,12 @@
 
 ;;; Coffeescript
 
-(after-load 'coffee-mode
-  (setq coffee-js-mode preferred-javascript-mode
-        coffee-tab-width preferred-javascript-indent-level))
+;; (after-load 'coffee-mode
+;;   (setq coffee-js-mode preferred-javascript-mode
+;;         coffee-tab-width preferred-javascript-indent-level))
 
-(when (fboundp 'coffee-mode)
-  (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
+;; (when (fboundp 'coffee-mode)
+;;   (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode)))
 
 ;; ---------------------------------------------------------------------------
 ;; Run and interact with an inferior JS via js-comint.el
@@ -106,10 +113,10 @@
 ;; Alternatively, use skewer-mode
 ;; ---------------------------------------------------------------------------
 
-(when (maybe-require-package 'skewer-mode)
-  (after-load 'skewer-mode
-    (add-hook 'skewer-mode-hook
-              (lambda () (inferior-js-keys-mode -1)))))
+;; (when (maybe-require-package 'skewer-mode)
+;;   (after-load 'skewer-mode
+;;     (add-hook 'skewer-mode-hook
+;;               (lambda () (inferior-js-keys-mode -1)))))
 
 
 (when (maybe-require-package 'add-node-modules-path)
@@ -125,6 +132,7 @@
 (when (maybe-require-package 'rjsx-mode)
   (after-load 'rjsx-mode
     (define-key rjsx-mode-map (kbd "C-j") 'rjsx-delete-creates-full-tag)))
+
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

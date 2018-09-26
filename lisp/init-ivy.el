@@ -76,11 +76,23 @@ instead."
 
     (define-key ivy-mode-map (kbd "C-s") 'swiper)))
 
+(defun avg-goto-word-0-in-line ()
+  (interactive)
+  (avy-goto-word-0 nil (point-at-bol) (point-at-eol))
+  )
+
+(defun avg-goto-word-1-in-line (char &optional arg)
+  (interactive (list (read-char "char: " t)
+                     current-prefix-arg))
+  (avy-goto-word-1 char arg (point-at-bol) (point-at-eol) nil)
+  )
+
 (when (maybe-require-package 'avy)
   (global-set-key (kbd "C-:") 'avy-goto-char)
-  (global-set-key (kbd "C-'") 'avy-goto-char-2)
+  ;; (global-set-key (kbd "C-'") 'avy-goto-char-2)
   (global-set-key (kbd "M-g f") 'avy-goto-line)
   (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+  (global-set-key (kbd "C-'") 'avg-goto-word-1-in-line)
   )
 
 (when (maybe-require-package 'ivy-xref)

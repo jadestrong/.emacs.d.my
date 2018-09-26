@@ -1,7 +1,7 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; Code:
-(setq-default dired-dwin-target t)
+(setq-default dired-dwim-target t)
 
 ;; Prefer g-prefixed coreutils version of standard utilities when available gls => ls commond [brew install coreutils] coreutils contains gls
 (let ((gls (executable-find "gls")))

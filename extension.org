@@ -1,0 +1,74 @@
+* markdown-mode
+  #+BEGIN_SRC emacs-lisp
+    (use-package markdown-mode
+                 :ensure t
+                 :mode (("README\\.md\\'" . gfm-mode)
+                        ("\\.md\\'" . markdown-mode)
+                        ("\\.markdown\\'" . markdown-mode))
+                 :init (setq markdown-command "multimarkdown"))
+  #+END_SRC
+* multiple-cursors
+#+BEGIN_SRC emacs-lisp
+  (use-package multiple-cursors
+    :init
+    (progn
+      ;; these need to be defined here - if they're lazily loaded with
+      ;; :bind they don't work.
+      (global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
+      (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+      (global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "C-c C-l") 'c/mark-all-like-this)))
+#+END_SRC
+* reveal.js
+#+BEGIN_SRC emacs-lisp
+  (use-package ox-reveal
+    :load-path "~/Documents/GitHub/org-reveal")
+
+  (setq org-reveal-root "https://cdn.bootcss.com/reveal.js/3.6.0/")
+  (setq org-reveal-mathjax t)
+
+  (use-package htmlize
+    :ensure t)
+#+END_SRC
+* color-rg
+#+BEGIN_SRC emacs-lisp
+  (use-package color-rg
+    :load-path "./elisp/color-rg")
+#+END_SRC
+* buffer-move
+  #+BEGIN_SRC emacs-lisp
+    (use-package buffer-move
+      :ensure t
+      :init
+      (progn
+        (global-set-key (kbd "C-S-i") 'buf-move-up)
+        (global-set-key (kbd "C-S-k") 'buf-move-down)
+        (global-set-key (kbd "C-S-j") 'buf-move-left)
+        (global-set-key (kbd "C-S-l") 'buf-move-right)))
+  #+END_SRC
+* xah-fly-keys
+  #+BEGIN_SRC emacs-lisp
+    (use-package xah-fly-keys
+      :load-path "elisp/xah-fly-keys"
+      :demand t
+      :bind
+      ;; ("]" . xah-forward-quote-smart)
+      (:map isearch-mode-map
+            ("C-n" . isearch-repeat-forward)
+            ("C-p" . isearch-repeat-backward))
+      (:map xah-fly-key-map
+            ("'" . nil))
+      :init
+      (setq xah-fly-use-control-key nil)
+      :config
+      (xah-fly-keys-set-layout "qwerty")
+      (define-key key-translation-map (kbd "ESC") (kbd "<f8>"))
+
+      (defun my-xfk-insert-color ()
+        (modify-all-frames-parameters (list (cons 'cursor-type '(bar . 5))))
+        (set-cursor-color "yellow"))
+      (add-hook 'xah-fly-insert-mode-activate-hook 'my-xfk-insert-color)
+      (xah-fly-keys 1)
+      )
+  #+END_SRC

@@ -9,6 +9,7 @@
 (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
 (require 'init-benchmarking) ;; Measure startup time
 
@@ -82,14 +83,18 @@
 (require 'init-folding)
 (require 'init-dash)
 
-(require 'init-vue)
+;; (require 'init-vue)
 (require 'init-highlight-indent)
 (require 'init-backups)
 ;; (require 'init-remote)
+(require 'init-isearch)
 
 (require-package 'gnuplot)
 (require-package 'lua-mode)
 (require-package 'htmlize)
+
+;; (require 'awesheel)
+
 (when *is-a-mac*
   (require-package 'osx-location))
 (maybe-require-package 'regex-tool)
@@ -110,9 +115,12 @@
 
 ;; Bootstrap 'use-package'
 
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(org-babel-load-file (expand-file-name "~/.emacs.d/extension.org"))
+
 ;;; powerline
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/powerline.org"))
 
